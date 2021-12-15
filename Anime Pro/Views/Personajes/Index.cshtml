@@ -1,0 +1,51 @@
+﻿@model List<PersonajeModel>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Listado de Personajes</h3>
+    </div>
+    <div class="col-md-6">
+        <a asp-controller="Personajes" asp-action="NuevoPersonaje" class="btn btn-primary float-right"><i class="bi bi-bookmark-plus"></i>Nuevo</a>
+    </div>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        @if (Model.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Lanzamiento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.FechaLanzamiento.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <a asp-route-id="@item.Id" asp-controller="Personajes" asp-action="EditarPersonaje" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil"></i></a>
+                                <a asp-route-id="@item.Id" asp-controller="Personajes" asp-action="EliminarPersonaje" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <h3>
+                No Existen registros para mostrar...
+            </h3>
+        }
+
+    </div>
+</div>
+

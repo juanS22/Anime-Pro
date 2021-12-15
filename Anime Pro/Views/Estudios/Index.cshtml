@@ -1,0 +1,37 @@
+﻿@model List<EstudioModel>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Listado de Estudios</h3>
+    </div>
+    <div class="col-md-6">
+        <a asp-controller="Estudios" asp-action="NuevoEstudio" class="btn btn-primary float-right"><i class="bi bi-bookmark-plus"></i>Nuevo</a>
+    </div>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Nombre</td>
+                        <td>
+                            <a asp-route-id="@item.Id" asp-controller="Estudios" asp-action="EditarEstudio" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil"></i></a>
+                            <a asp-route-id="@item.Id" asp-controller="Estudios" asp-action="EliminarEstudio" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

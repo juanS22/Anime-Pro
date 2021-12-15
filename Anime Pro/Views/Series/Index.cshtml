@@ -1,0 +1,54 @@
+﻿@model List<SerieModel>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Listado de Series</h3>
+    </div>
+    <div class="col-md-6">
+        <a asp-controller="Series" asp-action="Nuevo" class="btn btn-primary float-right"><i class="bi bi-bookmark-plus"></i>Nuevo</a>
+    </div>
+</div>
+<hr />
+@foreach (var seri in Model)
+{
+<div class="ml-5">
+    <span>@seri.Nombre @seri.Anio @seri.EstudioNombre</span>
+    <div class="row">
+        <div class="col-md-2">
+            <span>
+                <img src="@seri.AficheUrl" style="width:225px;height:315px;" />
+            </span>
+        </div>
+        <div class="col-md-6">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/@seri.Trailer"
+                    frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    <div class="mt-5">
+        <h3>Resumen</h3>
+        <p>@seri.Sinopsis</p>
+    </div>
+    <div class="mt-2">
+        <p>Personajes:</p>
+        @foreach (var personaje in seri.Personajes)
+        {
+            <a asp-controller="Personajes" asp-action="obtenerporid" asp-route-id="@personaje.Id">@personaje.Nombre</a>
+        }
+    </div>
+    <div class="mt-2">
+        <p>Generos:</p>
+        <ul>
+            @foreach (var genero in seri.Generos)
+            {
+                <li>@genero</li>
+            }
+        </ul>
+        
+    </div>
+    <div>
+        <a asp-controller="Series" asp-action="EditarSerie">Editar</a> | <a asp-controller="Series" asp-action="Eliminar">Eliminar</a>
+    </div>
+</div>
+<hr />
+}   

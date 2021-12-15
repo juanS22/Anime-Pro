@@ -1,0 +1,12 @@
+﻿@model EstudioEdicionModel
+<h3>Eliminar Estudio</h3>
+<hr />
+<form method="post" asp-controller="Estudios" asp-action="EliminarEstudio">
+    <h4>Esta seguro de eliminar el Estudio:</h4>
+    <h4>Id: @Model.Id</h4>
+    <h4>Nombre: @Model.Nombre</h4>
+    <input type="hidden" asp-for="Id" />
+    <br />
+    <button type="submit" class="btn btn-danger">Si</button>
+    <a asp-controller="Estudios" asp-action="Index" class="btn btn-secondary">No</a>
+</form>

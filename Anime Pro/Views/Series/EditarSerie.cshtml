@@ -1,0 +1,67 @@
+﻿@model SerieEdicionModel
+<h3>Editar Personaje</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" asp-controller="Series" asp-action="EditarSerie">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="AficheUrl" />
+                    <div class="form-group">
+                        <label asp-for="Nombre"></label>
+                        <input asp-for="Nombre" type="text" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Anio"></label>
+                        <input asp-for="Anio" type="date" class="form-control" />
+                        <span asp-validation-for="Anio" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sinopsis"></label>
+                        <textarea asp-for="Sinopsis" rows="10" class="form-control"></textarea>
+                        <span asp-validation-for="Sinopsis" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Afiche"></label>
+                        <input asp-for="AficheUrl" class="form-control" type="file" />
+
+                    </div>
+                    <div class="form-group">
+                        <label>Personajes</label>
+                        <select class="form-control" asp-for="PersonajeId" asp-items="Model.Personajes" multiple>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Estudio</label>
+                        <select class="form-control" asp-for="EstudioId" asp-items="Model.Estudios">
+                            <option value="">--Seleccione--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Genero</label>
+                        <select class="form-control" asp-for="GeneroId" asp-items="Model.Generos" multiple>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+            </div>
+        </div>
+
+
+    </div>
+</div>
